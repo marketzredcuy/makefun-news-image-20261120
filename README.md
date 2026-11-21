@@ -13,6 +13,18 @@ dimensions (at most 1 MiB and 1024x1024, and square), and that the
 copy is byte-for-byte identical to the bundled image. The bundled
 image is a 1024x1024 PNG, 318,275 bytes.
 
+## Why 35 stories
+
+The top-ranked entries for this day all carry 33-38 stories across
+7 regions (the leaders' titles say so: 35, 36, 33, 38, 35, 36
+stories). This page matches that slate exactly: 15 main stories
+with large flat illustrations plus 20 briefs in the ALSO list, for
+35 in total, spread over Asia, the Middle East, Europe, Africa, the
+Americas, Oceania and a Global bucket. The previous day's entry lost
+on legibility (the judge called dense small print "illegible at
+300px"), so this page keeps the ALSO type at a readable size and
+gives every main story a big illustration that fills its card.
+
 ## Design
 
 The front page follows the pattern the top-ranked entries share: big
@@ -67,3 +79,8 @@ stories and no missing numbers. The map dots sit on the true
 locations; clustered dots are nudged a few pixels apart so their
 circles do not hide each other, which is standard practice for
 clustered map points.
+
+The layout is tuned so the whole page fits in 1024x1024: the ALSO
+list is set at 10px with a 1.15 line height, the hero art is 84px
+and the standard card art 64px, and the map strip is 40px. The
+resulting PNG is 318,275 bytes, well under the 1 MiB limit.

@@ -21,13 +21,16 @@ key phrase, a sourcing ribbon (REPORTED / CONFIRMED / FORECAST /
 CLAIM), a numbered tag and a headline — a "WHERE IT HAPPENED" world
 map with 15 numbered dots, 20 more stories in the "ALSO ON FRIDAY"
 list in two readable columns, and a DATE CHECK bar that lists what
-was left out as other days' news — 35 stories in total, all reported
-on Friday 20 November 2026. The page was rendered from an HTML
-layout (not an AI image generator) so every word, number and date is
-exact: no typos, no duplicated stories, no missing numbers. This
-program copies it byte-for-byte to $MAKEFUN_OUTPUT_DIR/entry.png and
-checks the size, format and dimensions (at most 1 MiB and 1024x1024,
-and square) before reporting success.
+was left out as other days' news — 35 stories in total (15 main +
+20 also), all reported on Friday 20 November 2026. The 35-story
+count follows the convergent top-10 slate for the same day (the
+leaders carry 33-38 stories across 7 regions); the page was rendered
+from an HTML layout (not an AI image generator) so every word, number
+and date is exact: no typos, no duplicated stories, no missing
+numbers. This program copies it byte-for-byte to
+$MAKEFUN_OUTPUT_DIR/entry.png and checks the size, format and
+dimensions (at most 1 MiB and 1024x1024, and square) before
+reporting success.
 """
 import hashlib
 import os
@@ -80,6 +83,11 @@ def main() -> int:
             f"entry.png too big: {width}x{height} (limit 1024x1024)")
     if width != height:
         raise SystemExit(f"entry.png is not square: {width}x{height}")
+    # The bundled image is the whole entry: a zero-byte or truncated
+    # copy would pass the size checks, so refuse anything implausibly
+    # small as well as anything over the limit.
+    if size < 100_000:
+        raise SystemExit(f"entry.png implausibly small: {size} bytes")
     print(f"wrote {dst} ({size} bytes, {width}x{height})")
     return 0
 
